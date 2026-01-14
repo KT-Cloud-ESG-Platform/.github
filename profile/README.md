@@ -1,12 +1,81 @@
-## Hi there 👋
+<div align="center">
 
-<!--
+# SmartChain ESG
+**AI 기반 공급망 ESG 실사 자동화 플랫폼**
 
-**Here are some ideas to get you started:**
+협력사 증빙 업로드부터 **데이터 추출(OCR/파서) → KPI 산출 → AI 리포트 생성 → 감사/제출용 증빙 패키지(data.zip)**까지  
+공급망 ESG 실사 업무를 한 흐름으로 단순화합니다.
 
-🙋‍♀️ A short introduction - what is your organization all about?
-🌈 Contribution guidelines - how can the community get involved?
-👩‍💻 Useful resources - where can the community find your docs? Is there anything else the community should know?
-🍿 Fun facts - what does your team eat for breakfast?
-🧙 Remember, you can do mighty things with the power of [Markdown](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
--->
+</div>
+
+---
+
+## 핵심 가치
+- **증빙 기반(Proof-first)**: 수기 입력 중심의 불확실성을 줄이고, 결과가 어떤 증빙에 근거했는지 **항목 단위로 추적** 가능
+- **확장성(SaaS-ready)**: 협력사 규모가 커져도 동일 프로세스/규칙으로 전수 관리에 유리
+- **업무 자동화**: 반복적인 검증·정리 작업을 자동화하여 담당자는 **고위험군 중심 의사결정**에 집중
+
+---
+
+## 주요 기능
+### 1) 다중 형식 증빙 업로드 & 자동 추출
+- PDF / XLSX / DOCX / 이미지 등 형식 제한 최소화
+- 업로드 즉시 OCR/파서로 데이터 자동 추출
+- 추출 결과는 표준 스키마(JSON 등)로 구조화 저장
+
+### 2) KPI 산출 & AI 리포트 생성
+- 증빙에서 유효 데이터만 선별하여 정량 지표 산출
+- 지표 기반 성과 요약, 업계 평균 비교/증감 해석
+- 정량+정성 결합 스코어링으로 위험군(저/중/고) 분류 및 근거 제시
+
+### 3) 감사/제출 대응 패키지 Export (data.zip)
+- 증빙 파일, 메타데이터, 원본 입력, 파싱 결과(+위치정보), 지표 결과, 로그 등을 한 번에 패키징
+- 결과 ↔ 증빙을 1:1로 연결해 **감사 추적성** 강화
+
+---
+
+## 역할 기반 흐름(RBAC)
+- **게스트**: 권한 요청 / 처리 상태 확인
+- **기안자(협력사 작성자)**: 정성 응답 작성, 정량 데이터 업로드, 증빙 태깅, 제출/재제출
+- **결재자(협력사 팀장)**: 내부 승인, 제출 품질 보증, 패키지 다운로드(범위 제한)
+- **수신자(원청 ESG 담당)**: 최종 심사/보완 요청, 리스크 확인, 보고서 발행/내보내기
+- **관리자(원청 운영)**: 사용자/조직/권한 관리, 기준·룰·템플릿 관리, 로그/정책 운영
+
+---
+
+## 레포지토리 구성(예시)
+- `frontend/` : React + Vite (대시보드/업로드/검토 UI)
+- `backend/`  : Spring Boot (Auth/RBAC, API, Export, 감사로그)
+- `ai/`       : OCR/파서, KIE, 리포트/스코어링 모듈
+- `infra/`    : IaC/배포 스크립트/환경 설정
+- `docs/`     : 요구사항, ERD, API 명세, 아키텍처, 운영 가이드
+
+---
+
+## 개발 원칙
+- **결과는 증빙과 연결된다**: 모든 산출물은 evidence-id 기반으로 역추적 가능해야 함
+- **AI는 보조 수단**: 최종 판단/승인은 사용자(담당자)에게 귀속
+- **감사 로그 기본 탑재**: 다운로드/수정/승인 등 주요 이벤트는 추적 가능하게 기록
+
+---
+
+## Quick Start (워크플로우만)
+1. 협력사(기안자) 업로드 → 추출/구조화
+2. KPI 산출 → 진단표 생성
+3. 결재/검수 프로세스 진행
+4. 원청 담당자 승인 → 보고서/PDF/CSV Export
+5. `data.zip` 패키지로 제출/감사 대응
+
+---
+
+## Links
+- 📌 Project Docs: `docs/`
+- 🧾 API Spec: `docs/api/`
+- 🗂️ ERD: `docs/erd/`
+- 🧪 Demo Scenario: `docs/demo/`
+
+---
+
+## Team
+KT AIVLE School 8th · 수도권 5반 10조  
+PM / FE / BE / AI / Infra 협업 기반으로 개발합니다.
